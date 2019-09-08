@@ -14,9 +14,9 @@ from yolo3.utils import get_random_data
 
 
 def _main():
-    annotation_path = 'train.txt'
+    annotation_path = 'model_data/data/example.txt'
     log_dir = 'logs/000/'
-    classes_path = 'model_data/voc_classes.txt'
+    classes_path = 'model_data/egh455_classes.txt'
     anchors_path = 'model_data/yolo_anchors.txt'
     class_names = get_classes(classes_path)
     num_classes = len(class_names)
@@ -102,7 +102,7 @@ def get_anchors(anchors_path):
     return np.array(anchors).reshape(-1, 2)
 
 
-def create_model(input_shape, anchors, num_classes, load_pretrained=True, freeze_body=2,
+def create_model(input_shape, anchors, num_classes, load_pretrained=False, freeze_body=2,
             weights_path='model_data/yolo_weights.h5'):
     '''create the training model'''
     K.clear_session() # get a new session
